@@ -1,0 +1,28 @@
+.gif-tile {
+    height: 350px;
+    width: 262px;
+    /* background-color: black; */
+    margin: 20px;
+    display: flex;
+    position: relative;
+    top: 30%;
+    color: white;
+  }
+
+  .display{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .Buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+   
+  }
+
+  button{
+    
+    margin-left: 10px;
+    margin-right: 10px; 
+  }
