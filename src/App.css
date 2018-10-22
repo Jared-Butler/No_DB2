@@ -1,13 +1,8 @@
 .App {
   height: 200vh;
-  width: 98.9vw;
+  width: 100vw;
   text-align: center;
   display: flex;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
 }
 
 .App-header {
@@ -31,8 +26,9 @@
   /* justify-content: space-between; */
   height: 60px;
   width: 60px;
-  margin-right: 60px;
+  margin-right: 100px;
   border-radius: 50px;
+  padding: 0px;
 }
 
 .App-Body {

@@ -1,17 +1,19 @@
 .gif-tile {
     height: 350px;
-    width: 262px;
+    width: 100vw;
     /* background-color: black; */
     margin: 20px;
     display: flex;
     position: relative;
     top: 30%;
     color: white;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 
   .display{
-    flex-direction: row;
-    flex-wrap: wrap;
+   
+    
   }
 
   .Buttons{
@@ -26,3 +28,8 @@
     margin-left: 10px;
     margin-right: 10px; 
   }
+
+
+
+  /* height: 350px; */
+  /* width: 262px; */
