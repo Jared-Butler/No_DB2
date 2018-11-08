@@ -38,13 +38,26 @@ app.post('/api/gif', (req, res, next) => {
 }
 );
 
-//This updates the gif tile array, allowing the user to pick a new gif.
-// app.put("/api/gifs:id", (req, res, next) => {
-    
-// } );
+//this updates the edit status to True or False to allow for edit.
+app.put("/api/edit/:id/:edit", (req, res, next) => {
+    let i = req.params.id;
+    let status = req.params.edit;
+    console.log("delete param:", req.params.id);
+    if (status === "true") {gifTile[i].edit = true;}
+    else {gifTile[i].edit = false;}
+    res.sendStatus(200)
+} );
 
 //this updates the gifTile array, allowing the user to set a new description.
-// app.put("/api/desc:id");
+app.put("/api/desc/:id", (req, res, next) => {
+    let i = req.params.id;
+    let desc = req.body.description;
+    console.log(req.body);
+    gifTile[i].description = desc;
+    console.log(gifTile[i]);
+    res.sendStatus(200)
+} );
+
 
 //this will be used to delete an entire gif object from the gifTile array above.
 app.delete('/api/gifs/:id', (req, res, next) => {

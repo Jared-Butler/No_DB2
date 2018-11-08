@@ -44,7 +44,7 @@ class GifTile extends Component {
    async handleSave(i){
         const { description } = this.state;
         console.log(description);
-        await axios.put(`/api/desc/${i}`, {description: description});
+        await axios.put(`/api/desc/${i}`, description);
         await this.exitEdit(i)
 
     }

@@ -3,6 +3,23 @@ import './gifSearch.css';
 
 
 class GifSearch extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchInput: ''
+        }
+    }
+
+
+    //update state.
+
+    handleSearchState = (e) => {
+        console.log(this.state.searchInput);
+        this.setState({
+            searchInput: e.target.value
+        })
+    }
+
     render() {
         let { gifsArray, selectGif, saveButton } = this.props;
 
@@ -10,6 +27,7 @@ class GifSearch extends Component {
             return <img key={index} src={image} alt="https://techcrunch.com/wp-content/uploads/2015/06/gifgif.gif?w=730&crop=1" onClick={() => selectGif(image)} />
             //filter and set state here.
         });
+
 
         // console.log(images)
 
@@ -26,6 +44,8 @@ class GifSearch extends Component {
                         onKeyDown={(event) => { if (event.key === "Enter") { saveButton() } }}
                     />
                     <button onClick={saveButton}>Save</button>
+
+                    <input type="text" placeholder="Random Text Box" onChange={this.handleSearchState}  />
                 </div>
             </div>
         )

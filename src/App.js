@@ -13,7 +13,8 @@ class App extends Component {
       gifSearch:[],
       gifSelect:"",
       searchTile: {},
-      gifsToDisplay: []
+      gifsToDisplay: [],
+      edit: false
       
     }
     this.handleSearchInput = this.handleSearchInput.bind(this);
@@ -41,14 +42,11 @@ handleDescInput = (e) => {
 
 //send params in body
 handleSearchButton = (e) => {
-  // console.log("HandleSearchButton");
-  // console.log(this.state.searchInput);
   const {searchInput} = this.state;
   axios.get(`/api/gif/${searchInput}`)
   .then((res) => {this.setState({
     gifSearch: res.data
   }); 
-  // console.log(this.gifSearch)
 }
   )
   .catch(err => console.log(err));
@@ -64,11 +62,11 @@ selectGifs = (clickedGif) => {
 
 //this saves only the filtered gif, the search param, and the description to an object and pushes it to the server to be returned and mapped out in the gif tile component.
 createTile = (e) => {
-  const { searchInput, descInput, gifSelect  } = this.state;
-  // console.log(gifSelect)
-  this.setState({searchTile:[{ search: searchInput, description: descInput, gif: gifSelect }], 
+  const { searchInput, descInput, gifSelect, edit  } = this.state;
+
+  this.setState({searchTile:[{ search: searchInput, description: descInput, gif: gifSelect, edit: edit }], 
   }, function(){
-    // console.log(this.state.searchTile);
+    
     axios.post('/api/gif',this.state.searchTile)
     .then(this.setState({
       searchInput:"",
@@ -76,7 +74,7 @@ createTile = (e) => {
       gifSelect:"",
       gifSearch:[]
     }, () => this.displayTile() )
-    // console.log("I ran")
+    
     )
     
   }); 
@@ -99,13 +97,15 @@ displayTile = () => {
 
 //this deletes the entire object containing the gif info from the array of objects found within the server.
 deleteTile = (index) => {
-  axios.delete(`/api/gifs/${index}`)
+  axios.delete(`/api/gifs/${index}`,
+  )
   .then(() => this.displayTile())
 }
 
 
 
   render() {
+  
     return (
       <div className="App">
         <header className="App-header">
@@ -123,10 +123,11 @@ deleteTile = (index) => {
           saveButton={this.createTile}
           />
            
-
+            {/* {gifs_2} */}
           <GifTile
           gifTilesArray={this.state.gifsToDisplay}
           deleteTile={this.deleteTile}
+          displayTile={this.displayTile}
           />
         </div>
       </div>

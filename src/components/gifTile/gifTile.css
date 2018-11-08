@@ -9,10 +9,13 @@
     color: white;
     flex-wrap: wrap;
     flex-direction: row;
+    
   }
 
   .display{
-   
+    border-style: dashed;
+    border-color: red;
+    border-width: 5px;
     
   }
 
